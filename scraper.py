@@ -43,7 +43,10 @@ def scrap(baseUrl):
 			# print '\n'
 
 			try:
-				traverseList.append('http://doer.metastudio.org/phet/en/'+tag['href'])
+				if(baseUrl == 'http://doer.metastudio.org/phet/en/simulations.html'):
+					traverseList.append('http://doer.metastudio.org/phet/en/'+tag['href'])
+				if(baseUrl == 'http://localhost:8008/learn/khan/'):
+					print(aRefs)
 			except KeyError:
 				print('href tag does not exist')
 
