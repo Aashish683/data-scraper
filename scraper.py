@@ -24,7 +24,7 @@ def scrape(baseUrl):
 		try:
 			response = urlopen(url)
 		except urllib.error.URLError as e:
-		 	print('URLError with URL ' + url + ' with error being ' + e.reason + '\n')
+		 	print(e.reason)
 		 	continue
 
 		try:
