@@ -1,7 +1,6 @@
 from scraper import scrap
 
-# ''http://doer.metastudio.org/phet/en/simulations.html''
-BASE_URL_List = ['http://localhost:8008/learn/khan/']
+BASE_URL_List = ['http://doer.metastudio.org/phet/en/simulations.html']
 
 for base in BASE_URL_List:
 	scrap(base)
