@@ -1,16 +1,18 @@
 import urllib.error
 from urllib.request import urlopen
+import json
 from bs4 import BeautifulSoup
 from parser import parseLinks
 from extract import extractInfo
 
-def scrap(baseUrl):
+def scrape(baseUrl):
 
 	traverseList = []
 	base = baseUrl
 	traverseList.insert(0,base)
 	limit = 40
 	count = 0
+	infoList = []
 
 	while(traverseList):
 
@@ -33,6 +35,7 @@ def scrap(baseUrl):
 		soup = BeautifulSoup(webContent,'html.parser')
 		aRefs = parseLinks(soup,url,baseUrl)
 		info =	extractInfo(url,baseUrl,soup)
+		infoList.append(info)
 
 		if(not aRefs):
 			continue
@@ -53,6 +56,9 @@ def scrap(baseUrl):
 		print('Checked url ' + url)
 		count += 1
 
+	file = open('metadata.json','w')
+	json.dump({ 'metadata': infoList },file)
+	file.close()
 	print('Successfully completed scraping base url' + base + '\n')
 
 
